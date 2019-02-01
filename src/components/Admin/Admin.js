@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import SearchResultsItem from './SearchResultsItem';
 
-class SearchResults extends Component {
+class Admin extends Component {
 
-    appendToDOM = () => {
+    // appendToDOM = () => {
 
 
-        return this.props.reduxStore.searchList.map((result) => {
-            return <SearchResultsItem key={result.id} result={result} />
-        })
+    //     return this.props.reduxStore.searchList.map((result) => {
+    //         return <SearchResultsItem key={result.id} result={result} />
+    //     })
 
-    }
+    // }
 
     render() {
         return (
@@ -26,4 +25,4 @@ const mapStoreToProps = reduxStore => ({
     reduxStore,
 })
 
-export default connect(mapStoreToProps)(SearchResults);
+export default connect(mapStoreToProps)(Admin);

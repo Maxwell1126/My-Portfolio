@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import Admin from '../Admin/Admin.js';
 import Project from '../Project/Project.js';
 class App extends Component {
@@ -7,7 +8,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <p>Empty Page</p>
+      <Router>
+        <header>
+        <Link to="/">Project</Link>
+        <br/>
+        <Link to="/Admin">Admin</Link>
+        </header>
+      </Router>
       </div>
     );
   }
