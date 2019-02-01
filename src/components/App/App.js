@@ -9,11 +9,15 @@ class App extends Component {
     return (
       <div className="App">
       <Router>
+        <div>
         <header>
         <Link to="/">Project</Link>
         <br/>
         <Link to="/Admin">Admin</Link>
         </header>
+        <Route extact path="/" component={Project} />
+        <Route extact path="/Admin" component={Admin} />
+        </div>
       </Router>
       </div>
     );

@@ -15,7 +15,7 @@ class Admin extends Component {
     render() {
         return (
             <div>
-                {this.appendToDOM()}
+                {/* {this.appendToDOM()} */}
             </div>
         );
     }
