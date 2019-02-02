@@ -7,16 +7,19 @@ class Project extends Component {
         this.getProjects()
     }
 
-   getProjects = () => {
-    axios({
-        method:'GET',
-        url:'/project'
-    }).then((response)=>{
-        const action = {type:'SET_PROJECTS', payload:response.data};
+//    getProjects = () => {
+//     axios({
+//         method:'GET',
+//         url:'/project'
+//     }).then((response)=>{
+//         const action = {type:'SET_PROJECTS', payload:response.data};
+//         this.props.dispatch(action);
+//     })
+//    }
+    getProjects = () => {
+        const action = { type: 'FETCH_PROJECTS' };
         this.props.dispatch(action);
-    })
-   }
-
+    }
     render() { 
         
         return (

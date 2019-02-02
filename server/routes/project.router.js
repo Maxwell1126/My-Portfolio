@@ -13,7 +13,24 @@ router.get('/', (req, res) => {
         console.log('in error', error);
     })
 });
-
+router.post('/', (req, res) => {
+    const newProject = req.body;
+    const queryText = `INSERT INTO project ("name", "description", "website", "github", "date_completed")
+                    VALUES ($1, $2, $3, $4, $5,)`;
+    const queryValues = [
+        newProject.name,
+        newProject.description,
+        newProject.website,
+        newProject.github,
+        newProject.date_completed,
+    ];
+    pool.query(queryText, queryValues)
+        .then(() => { res.sendStatus(201); })
+        .catch((err) => {
+            console.log('Error completing SELECT plant query', err);
+            res.sendStatus(500);
+        });
+});
 router.delete('/:id', (req, res) => {
     const queryText = 'DELETE FROM "projects" WHERE id=$1';
     pool.query(queryText, [req.params.id])

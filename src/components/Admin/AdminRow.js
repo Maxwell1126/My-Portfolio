@@ -38,23 +38,26 @@ class AdminRow extends Component {
             description: event.target.value,
         })
     }
+    // getProjects = () => {
+    //     axios({
+    //         method: 'GET',
+    //         url: '/project'
+    //     }).then((response) => {
+    //         const action = { type: 'SET_PROJECTS', payload: response.data };
+    //         this.props.dispatch(action);
+    //     })
+    // }
     getProjects = () => {
-        axios({
-            method: 'GET',
-            url: '/project'
-        }).then((response) => {
-            const action = { type: 'SET_PROJECTS', payload: response.data };
-            this.props.dispatch(action);
-        })
+        const action = { type: 'FETCH_PROJECTS' };
+        this.props.dispatch(action);
     }
 
 
 
     deleteProject = () => {
-        console.log('this', project.id);
         axios({
             method: 'DELETE',
-            url: `/project/${project.id}`
+            url: `/project/${this.props.project.id}`
         }).then((response) => {
             this.getProjects();
         }).catch((error) => {
@@ -64,42 +67,10 @@ class AdminRow extends Component {
     }
     render() {
         return (
-            <div>
-                <input onChange={this.updateName} placeholder="Name"></input>
-                <select>
-                    <option disabled selected>Select a Tag</option>
-                    <option value="React">React</option>
-                    <option value="JQuery">JQuery</option>
-                    <option value="Node">Node</option>
-                    <option value="SQL">SQL</option>
-                    <option value="Redux">Redux</option>
-                    <option value="HTML">HTML</option>
-                </select>
-                <input onChange={this.updateDate} type="date" placeholder="date"></input>
-                <input onChange={this.updateGithub} placeholder="GitHub URL"></input>
-                <input onChange={this.updatewebsite} placeholder="Webstire URL"></input>
-                <textarea onChange={this.updateDescription} rows="5" cols="100">Description</textarea>
-                <button >Submit</button>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.props.reduxStore.projects.map((project) => {
-                            return (
-                                <tr>
-                                    <td>{project.name}</td>
-                                    <td>{<button onClick={this.deleteProject}>Delete</button>}</td>
-                                </tr>)
-                        })}
-                    </tbody>
-                </table>
-            </div>
-        );
+            <tr>
+                <td>{this.props.project.name}</td>
+                <td>{<button onClick={this.deleteProject}>Delete</button>}</td>
+            </tr>)
     }
 }
 
