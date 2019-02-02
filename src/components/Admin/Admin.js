@@ -3,15 +3,6 @@ import { connect } from 'react-redux';
 
 class Admin extends Component {
 
-    // appendToDOM = () => {
-
-
-    //     return this.props.reduxStore.searchList.map((result) => {
-    //         return <SearchResultsItem key={result.id} result={result} />
-    //     })
-
-    // }
-
     render() {
         return (
             <div>
@@ -28,7 +19,26 @@ class Admin extends Component {
                 <input type="date" placeholder="date"></input>
                 <input placeholder="GitHub URL"></input>
                 <input placeholder="Webstire URL"></input>
+                <textarea rows="5" cols="100"></textarea>
+                <button>Submit</button>
 
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.props.reduxStore.projects.map((project) => {
+                            return (
+                                <tr>
+                                    <td>{project.name}</td>
+                                    <td>{<button>Delete</button>}</td>
+                                </tr>)
+                        })}
+                    </tbody>
+                </table>
             </div>
         );
     }

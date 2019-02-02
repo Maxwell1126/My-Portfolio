@@ -49,7 +49,6 @@ class Project extends Component {
                         })}
                     </tbody>
                 </table>
-                {JSON.stringify(this.props.reduxStore)}
             </div>
         );
     }
