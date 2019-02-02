@@ -1,10 +1,10 @@
 const express = require('express');
-const pool = require('../modules/pool.js');
+const pool = require('../modules/pool');
 
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    const queryText = `SELECT * FROM "projects" JOIN tags ON "projects"."tags_id" = tags."id";`
+    const queryText = `SELECT * FROM "tags" JOIN "projects" ON "projects"."tag_id" = "tags"."id";`
     pool.query(queryText).then((result) => {
         console.log('in result', result);
         res.send(result.rows);
@@ -13,3 +13,5 @@ router.get('/', (req, res) => {
         console.log('in error', error);
     })
 });
+
+module.exports = router;

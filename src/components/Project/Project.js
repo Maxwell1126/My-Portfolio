@@ -1,26 +1,59 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import axios from 'axios';
 class Project extends Component {
 
-    // appendToDOM = () => {
+    componentDidMount(){
+        this.getProjects()
+    }
 
+   getProjects = () => {
+    axios({
+        method:'GET',
+        url:'/project'
+    }).then((response)=>{
+        const action = {type:'SET_PROJECTS', payload:response.data};
+        this.props.dispatch(action);
+    })
+   }
 
-    //     return this.props.reduxStore.searchList.map((result) => {
-    //         return <SearchResultsItem key={result.id} result={result} />
-    //     })
-
-    // }
-
-    render() {
+    render() { 
+        
         return (
             <div>
-                {/* {this.appendToDOM()} */}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Thumbnail</th>
+                            <th>Website</th>
+                            <th>GitHub</th>
+                            <th>Date Completed</th>
+                            <th>Tag</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.props.reduxStore.projects.map((project) => {
+                            return(
+                            <tr>
+                                <td>{project.name}</td>
+                                <td>{project.description}</td>
+                                <td>{project.thumbnail}</td>
+                                <td><a href={project.website}>Website</a></td>
+                                <td><a href={project.github}>GitHub</a></td>
+                                <td>{project.date_completed}</td>
+                                <td>{project.tag_name}</td>
+                            </tr>)
+
+                        })}
+                    </tbody>
+                </table>
+                {JSON.stringify(this.props.reduxStore)}
             </div>
         );
     }
 }
-
 const mapStoreToProps = reduxStore => ({
     reduxStore,
 })

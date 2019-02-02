@@ -15,8 +15,8 @@ class App extends Component {
         <br/>
         <Link to="/Admin">Admin</Link>
         </header>
-        <Route extact path="/" component={Project} />
-        <Route extact path="/Admin" component={Admin} />
+        <Route exact path="/" component={Project} />
+        <Route exact path="/Admin" component={Admin} />
         </div>
       </Router>
       </div>
