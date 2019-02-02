@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import AdminRow from './AdminRow.js'
-class Admin extends Component {
-constructor(){
-    super()
-    this.state={
-        name:'',
-        description:'',
-        date:'',
-        github:'',
-        website:'',
-        tag:''
+class AdminRow extends Component {
+    constructor() {
+        super()
+        this.state = {
+            name: '',
+            description: '',
+            date: '',
+            github: '',
+            website: '',
+            tag: ''
+        }
     }
-}
     updateName = (event) => {
         this.setState({
             name: event.target.value,
         })
-    }    
+    }
     updateDate = (event) => {
         this.setState({
             date: event.target.value,
@@ -48,11 +47,11 @@ constructor(){
             this.props.dispatch(action);
         })
     }
-    
 
 
-deleteProject = () => {
-    console.log('this', project.id);
+
+    deleteProject = () => {
+        console.log('this', project.id);
         axios({
             method: 'DELETE',
             url: `/project/${project.id}`
@@ -62,7 +61,7 @@ deleteProject = () => {
             console.log(error);
             alert('Unable to delete item');
         });
-}
+    }
     render() {
         return (
             <div>
@@ -108,4 +107,4 @@ const mapStoreToProps = reduxStore => ({
     reduxStore,
 })
 
-export default connect(mapStoreToProps)(Admin);
+export default connect(mapStoreToProps)(AdminRow);

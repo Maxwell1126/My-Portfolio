@@ -14,4 +14,14 @@ router.get('/', (req, res) => {
     })
 });
 
+router.delete('/:id', (req, res) => {
+    const queryText = 'DELETE FROM "projects" WHERE id=$1';
+    pool.query(queryText, [req.params.id])
+        .then(() => { res.sendStatus(200); })
+        .catch((error) => {
+            console.log('Error', error);
+            res.sendStatus(500);
+        });
+});
+
 module.exports = router;
