@@ -1,45 +1,53 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Card from '@material-ui/core/Card';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import CardContent from '@material-ui/core/CardContent';
+import './Project.css';
 class ProjectRow extends Component {
     render() {
         let appendName = null;
         if (this.props.project.name !== null) {
-            appendName = this.props.project.name
+            appendName = <p>{'Name: ' + this.props.project.name}</p>
         }
         let appendDescription = null;
         if (this.props.project.description !== null) {
-            appendDescription = this.props.project.description
+            appendDescription = <p>{'Description: ' + this.props.project.description}</p>
         }
         let appendThumbnail = null;
         if (this.props.project.thumbnail !== null) {
-            appendThumbnail = this.props.project.thumbnail
+            appendThumbnail = <p>{'Thumbnail: ' + this.props.project.thumbnail}</p>
         }
         let appendWebsite = null;
         if (this.props.project.website !== null) {
-            appendWebsite = <a href={this.props.project.website}>Website</a>
+            appendWebsite = <p>{'Website: '}{<a href={this.props.project.website}>Website</a>}</p>
         }
         let appendGithub = null;
         if (this.props.project.github !== null) {
-            appendGithub = <a href={this.props.project.github}>GitHub</a>
+            appendGithub = <p>{'GitHub: '}{<a href={this.props.project.github}>GitHub</a>}</p>
         }
         let appendDate = null;
         if (this.props.project.date_completed !== null) {
-            appendDate = this.props.project.date_completed
-        }
-        let appendTag = null;
-        if (this.props.project.tag_name !== null) {
-            appendTag = this.props.project.tag_name
+            appendDate = <p>{'Date: '+this.props.project.date_completed}</p>
         }
         return (
-            <tr>
-                <td>{appendName}</td>
-                <td>{appendDescription}</td>
-                <td>{appendThumbnail}</td>
-                <td>{appendWebsite}</td>
-                <td>{appendGithub}</td>
-                <td>{appendDate}</td>
-                <td>{appendTag}</td>
-            </tr>)
+            <div className="container"><Card raised="true" className="card">
+                <CardContent className="content">
+                    {appendName}
+                    {appendDate}
+                    {appendThumbnail}
+                    {appendWebsite}
+                    {appendGithub}
+                    <p>{'Tag: ' + this.props.project.tag_name}</p>
+                </CardContent>
+                <CardContent >
+                    {appendDescription}
+                </CardContent> 
+            </Card>
+            </div>
+)
     }
 }
 const mapStoreToProps = reduxStore => ({

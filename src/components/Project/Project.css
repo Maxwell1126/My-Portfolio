@@ -1,0 +1,35 @@
+/* Styles the card to have space between it and the card below it.
+We also center align its content and set an exact width for the card. */
+.card{
+     width:700px;
+     text-align: center;
+     padding-bottom: 30px;
+}
+
+/* We want the content of certain cards to be evenly spaced within the card.
+We evenly space the button and input field in the cards. */
+.content{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/* We set the width of the containing element to the cards.
+We also center the cards with in the containing element.
+Last, we center the container in the midle of the page. */
+.container{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+/* We give the header element a navy background and white text.
+We also center the text in the header.
+Last, we add padding to the top and bottom of the element. */
+.head{
+    text-align: center;
+    background-color: navy;
+    color: white;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}

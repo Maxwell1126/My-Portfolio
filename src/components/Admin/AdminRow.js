@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
+import 'typeface-roboto';
 class AdminRow extends Component {
 
     getProjects = () => {

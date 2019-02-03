@@ -107,7 +107,7 @@ class Admin extends Component {
                     <option value="" disabled selected>Select a Tag</option>
                     {this.props.reduxStore.tags.map((tag) => {
                         return (
-                            <option value={tag.id}>{tag.tag_name}</option>
+                            <option value={tag.tag_id}>{tag.tag_name}</option>
                         )
                     })}
                 </select>
