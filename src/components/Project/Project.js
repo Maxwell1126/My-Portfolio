@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ProjectRow from './ProjectRow';
-
+import Card from '@material-ui/core/Card';
+import 'typeface-roboto';
+import Typography from '@material-ui/core/Typography';
+import './Project.css'
 class Project extends Component {
 
     componentDidMount() {
@@ -15,7 +18,8 @@ class Project extends Component {
 
     render() {
         return (
-            <div>
+            <div className="background">
+                <Card className="cardheader"><Typography><h1>Max's Portfolio</h1></Typography></Card>
                 {this.props.reduxStore.projects.map((project) => {
                     return (<ProjectRow key={project.id} project={project} />)
                 })}

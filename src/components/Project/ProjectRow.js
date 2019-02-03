@@ -30,10 +30,10 @@ class ProjectRow extends Component {
         }
         let appendDate = null;
         if (this.props.project.date_completed !== null) {
-            appendDate = <p>{'Date: '+this.props.project.date_completed}</p>
+            appendDate = <p>{'Date: ' + this.props.project.date_completed.substr(0,10)}</p>
         }
         return (
-            <div className="container"><Card raised="true" className="card">
+            <Card className="card">
                 <CardContent className="content">
                     {appendName}
                     {appendDate}
@@ -45,9 +45,7 @@ class ProjectRow extends Component {
                 <CardContent >
                     {appendDescription}
                 </CardContent> 
-            </Card>
-            </div>
-)
+            </Card>)
     }
 }
 const mapStoreToProps = reduxStore => ({

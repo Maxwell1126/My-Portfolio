@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import AdminRow from './AdminRow.js'
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableHead from '@material-ui/core/TableHead';
-import 'typeface-roboto';
+import './Admin.css'
 class Admin extends Component {
     constructor() {
         super()
@@ -98,7 +95,7 @@ class Admin extends Component {
 
     render() {
         return (
-            <div>
+            <div >
                 <Link to="/">back to projects</Link>
                 < br/>
                 <input onChange={this.updateName} placeholder="Name"></input>
@@ -114,23 +111,24 @@ class Admin extends Component {
                 <input onChange={this.updateDate} type="date" placeholder="date"></input>
                 <input onChange={this.updateGithub} placeholder="GitHub URL"></input>
                 <input onChange={this.updateWebsite} placeholder="Webstire URL"></input>
+                <br/>
                 <textarea onChange={this.updateDescription} defaultValue="Description" rows="5" cols="100"></textarea>
                 <button onClick={this.addProject}>Submit</button>
-                <Table>
-                    <TableHead>
+                <table>
+                    <thead>
                         <tr>
                             <th>Name</th>
                             <th>Delete</th>
                         </tr>
-                    </TableHead>
-                    <TableBody>
+                    </thead>
+                    <tbody>
                         {this.props.reduxStore.projects.map((project) => {
                             return (
                                 <AdminRow key={project.id} project={project} />
                             )
                         })}
-                    </TableBody>
-                </Table>
+                    </tbody>
+                </table>
             </div>
         );
     }
