@@ -15,6 +15,7 @@ class Project extends Component {
     render() { 
         return (
             <div>
+                {JSON.stringify(this.props.reduxStore.projects)}
                 <table>
                     <thead>
                         <tr>
@@ -28,6 +29,8 @@ class Project extends Component {
                         </tr>
                     </thead>
                     <tbody>
+                        
+                        
                         {this.props.reduxStore.projects.map((project) => {
                             return(
                             <tr>

@@ -12,7 +12,7 @@ class Admin extends Component {
                 date_completed: null,
                 github: null,
                 website: null,
-                tag: 2,
+                tag: null,
             }
         }
     }
@@ -68,6 +68,17 @@ class Admin extends Component {
         })
     }
 
+    updateTag = (event) => {
+        this.setState({
+            newProject: {
+                ...this.state.newProject,
+                tag: event.target.value,
+            }
+        })
+        
+        
+    }
+
     getTags = () => {
         const action = { type: 'FETCH_TAGS'};
         this.props.dispatch(action);
@@ -87,11 +98,12 @@ class Admin extends Component {
         return (
             <div>
                 <input onChange={this.updateName} placeholder="Name"></input>
-                <select>
+                <select onChange={this.updateTag}>
+               
                     <option value="" disabled selected>Select a Tag</option>
                     {this.props.reduxStore.tags.map((tag) => {
                         return (
-                            <option value={tag.tag_name}>{tag.tag_name}</option>
+                            <option value={tag.id}>{tag.tag_name}</option>
                         )
                     })}
                 </select>
