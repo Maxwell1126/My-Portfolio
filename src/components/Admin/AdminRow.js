@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
 class AdminRow extends Component {
 
     getProjects = () => {
@@ -13,6 +15,8 @@ class AdminRow extends Component {
             method: 'DELETE',
             url: `/project/${this.props.project.id}`
         }).then((response) => {
+            console.log('in delete', this.props.project.id);
+            
             this.getProjects();
         }).catch((error) => {
             console.log(error);
@@ -21,11 +25,13 @@ class AdminRow extends Component {
     }
 
     render() {
+        console.log('project', this.props.project.id);
+        
         return (
-            <tr>
-                <td>{this.props.project.name}</td>
-                <td>{<button onClick={this.deleteProject}>Delete</button>}</td>
-            </tr>)
+            <TableRow>
+                <TableCell>{this.props.project.name}</TableCell>
+                <TableCell>{<button onClick={this.deleteProject}>Delete</button>}</TableCell>
+        </TableRow>)
     }
 }
 

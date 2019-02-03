@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AdminRow from './AdminRow.js'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
+import 'typeface-roboto';
 class Admin extends Component {
     constructor() {
         super()
@@ -78,9 +78,7 @@ class Admin extends Component {
                 ...this.state.newProject,
                 tag: event.target.value,
             }
-        })
-        
-        
+        })   
     }
 
     getTags = () => {

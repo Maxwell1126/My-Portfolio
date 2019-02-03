@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
     const queryText = `SELECT * FROM "projects" JOIN "tags" ON 
-                                    "projects"."tag_id" = "tags"."id";`
+                                    "projects"."tag_id" = "tags"."tag_id" ORDER BY "projects"."id";`;
     pool.query(queryText).then((result) => {
         console.log('in result', result);
         res.send(result.rows);
@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     const newProject = req.body;
     const queryText = `INSERT INTO "projects" ("name", "description", 
-                     "date_completed", "github",  "tag_id", "website")                   
+                     "date_completed", "github", "tag_id", "website")                   
                     VALUES ($1, $2, $3, $4, $5, $6);`;
     const queryValues = [
         newProject.name,
@@ -35,7 +35,7 @@ router.post('/', (req, res) => {
         });
 });
 router.delete('/:id', (req, res) => {
-    const queryText = 'DELETE FROM "projects" WHERE id=$1';
+    const queryText = 'DELETE FROM "projects" WHERE projects.id=$1';
     pool.query(queryText, [req.params.id])
         .then(() => { res.sendStatus(200); })
         .catch((error) => {
