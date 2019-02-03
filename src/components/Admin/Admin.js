@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import axios from 'axios';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import AdminRow from './AdminRow.js'
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
 class Admin extends Component {
     constructor() {
         super()
@@ -97,6 +101,8 @@ class Admin extends Component {
     render() {
         return (
             <div>
+                <Link to="/">back to projects</Link>
+                < br/>
                 <input onChange={this.updateName} placeholder="Name"></input>
                 <select onChange={this.updateTag}>
                
@@ -112,21 +118,21 @@ class Admin extends Component {
                 <input onChange={this.updateWebsite} placeholder="Webstire URL"></input>
                 <textarea onChange={this.updateDescription} defaultValue="Description" rows="5" cols="100"></textarea>
                 <button onClick={this.addProject}>Submit</button>
-                <table>
-                    <thead>
+                <Table>
+                    <TableHead>
                         <tr>
                             <th>Name</th>
                             <th>Delete</th>
                         </tr>
-                    </thead>
-                    <tbody>
+                    </TableHead>
+                    <TableBody>
                         {this.props.reduxStore.projects.map((project) => {
                             return (
                                 <AdminRow key={project.id} project={project} />
                             )
                         })}
-                    </tbody>
-                </table>
+                    </TableBody>
+                </Table>
             </div>
         );
     }

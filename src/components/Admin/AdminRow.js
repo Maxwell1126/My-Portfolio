@@ -8,11 +8,7 @@ class AdminRow extends Component {
         this.props.dispatch(action);
     }
 
-
-
     deleteProject = () => {
-        console.log('this dot id', this.props.project.id);
-        
         axios({
             method: 'DELETE',
             url: `/project/${this.props.project.id}`
@@ -23,6 +19,7 @@ class AdminRow extends Component {
             alert('Unable to delete item');
         });
     }
+
     render() {
         return (
             <tr>

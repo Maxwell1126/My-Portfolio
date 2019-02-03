@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ProjectRow from './ProjectRow';
 // import axios from 'axios';
 class Project extends Component {
 
-    componentDidMount(){
+    componentDidMount() {
         this.getProjects()
     }
 
@@ -12,10 +13,10 @@ class Project extends Component {
         this.props.dispatch(action);
     }
 
-    render() { 
+    render() {
         return (
             <div>
-                {JSON.stringify(this.props.reduxStore.projects)}
+                {/* {JSON.stringify(this.props.reduxStore.projects)} */}
                 <table>
                     <thead>
                         <tr>
@@ -29,19 +30,8 @@ class Project extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        
-                        
                         {this.props.reduxStore.projects.map((project) => {
-                            return(
-                            <tr>
-                                <td>{project.name}</td>
-                                <td>{project.description}</td>
-                                <td>{project.thumbnail}</td>
-                                <td><a href={project.website}>Website</a></td>
-                                <td><a href={project.github}>GitHub</a></td>
-                                <td>{project.date_completed}</td>
-                                <td>{project.tag_name}</td>
-                            </tr>)
+                            return (<ProjectRow key={project.id} project={project} />)
                         })}
                     </tbody>
                 </table>

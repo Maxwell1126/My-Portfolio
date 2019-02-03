@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route,} from 'react-router-dom';
 import Admin from '../Admin/Admin.js';
 import Project from '../Project/Project.js';
 class App extends Component {
@@ -10,10 +10,8 @@ class App extends Component {
       <div className="App">
       <Router>
         <div>
-        <header>
-        <Link to="/">Project</Link>
+        <header>    
         <br/>
-        <Link to="/Admin">Admin</Link>
         </header>
         <Route exact path="/" component={Project} />
         <Route exact path="/Admin" component={Admin} />
