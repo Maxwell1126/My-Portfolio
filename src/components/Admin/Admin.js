@@ -7,59 +7,90 @@ constructor(){
     super()
     this.state={
         newProject:{
-        name:'',
-        description:'',
-        date:'',
-        github:'',
-        website:'',
-        tag:''
+        name:null,
+        description:null,
+        date_completed:null,
+        github:null,
+        website:null,
+        tag:2,
         }
     }
 }
+    componentDidMount() {
+        this.getProjects();
+    }
     updateName = (event) => {
         this.setState({
-            name: event.target.value,
+            newProject: {
+                ...this.state.newProject,
+                name: event.target.value,
+            } 
         })
+        
+        
     }    
     updateDate = (event) => {
         this.setState({
-            date: event.target.value,
+            newProject: {
+                ...this.state.newProject,
+                date_completed: event.target.value,
+            } 
         })
     }
     updateWebsite = (event) => {
         this.setState({
-            website: event.target.value,
+            newProject: {
+                ...this.state.newProject,
+                website: event.target.value,
+            } 
         })
+
     }
     updateGithub = (event) => {
         this.setState({
-            github: event.target.value,
+            newProject: {
+                ...this.state.newProject,
+                github: event.target.value,
+            } 
         })
     }
     updateDescription = (event) => {
         this.setState({
-            description: event.target.value,
+            newProject: {
+                ...this.state.newProject,
+                description: event.target.value,
+            } 
         })
     }
-    // getProjects = () => {
-    //     axios({
-    //         method: 'GET',
-    //         url: '/project'
-    //     }).then((response) => {
-    //         const action = { type: 'SET_PROJECTS', payload: response.data };
-    //         this.props.dispatch(action);
-    //     })
-    // }
+
     getProjects = () => {
         const action = { type: 'FETCH_PROJECTS' };
         this.props.dispatch(action);
     }
+
     addProject = event => {
-        event.preventDefault();
+        console.log('website', this.state.website);
+        console.log('date', this.state.date_completed);
+        // event.preventDefault();
         // Create a saga that listens for 'ADD_PLANT'
-        this.props.dispatch({ type: 'ADD_PROJECT', payload: this.state.newProject })
+        const action = { type: 'ADD_PROJECT', payload: this.state.newProject}
+        this.props.dispatch(action)
         
     }
+    // addProject = () => {
+    //     this.setState({
+    //         url: this.props.result.images.fixed_width.url
+    //     })
+
+    //     let image = this.state.url
+    //     axios({
+    //         method: 'POST',
+    //         url: '/api/favorite',
+    //         data: image
+    //     }).then((response) => {
+    //         console.log('hey state', this.state);
+    //         this.getFavorites();
+    //     })
     render() {
         return (
             <div>
