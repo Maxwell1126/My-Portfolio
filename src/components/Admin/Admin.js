@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
+// import axios from 'axios';
 import AdminRow from './AdminRow.js'
 class Admin extends Component {
     constructor() {
@@ -16,8 +16,10 @@ class Admin extends Component {
             }
         }
     }
+
     componentDidMount() {
         this.getProjects();
+        this.getTags();
     }
 
     updateName = (event) => {
@@ -86,20 +88,18 @@ class Admin extends Component {
             <div>
                 <input onChange={this.updateName} placeholder="Name"></input>
                 <select>
-                    {/* <option value=""disabled selected>Select a Tag</option> */}
-                    <option value="React">React</option>
-                    <option value="JQuery">JQuery</option>
-                    <option value="Node">Node</option>
-                    <option value="SQL">SQL</option>
-                    <option value="Redux">Redux</option>
-                    <option value="HTML">HTML</option>
+                    <option value="" disabled selected>Select a Tag</option>
+                    {this.props.reduxStore.tags.map((tag) => {
+                        return (
+                            <option value={tag.tag_name}>{tag.tag_name}</option>
+                        )
+                    })}
                 </select>
                 <input onChange={this.updateDate} type="date" placeholder="date"></input>
                 <input onChange={this.updateGithub} placeholder="GitHub URL"></input>
                 <input onChange={this.updateWebsite} placeholder="Webstire URL"></input>
                 <textarea onChange={this.updateDescription} defaultValue="Description" rows="5" cols="100"></textarea>
                 <button onClick={this.addProject}>Submit</button>
-
                 <table>
                     <thead>
                         <tr>

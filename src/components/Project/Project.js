@@ -1,27 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
+// import axios from 'axios';
 class Project extends Component {
 
     componentDidMount(){
         this.getProjects()
     }
 
-//    getProjects = () => {
-//     axios({
-//         method:'GET',
-//         url:'/project'
-//     }).then((response)=>{
-//         const action = {type:'SET_PROJECTS', payload:response.data};
-//         this.props.dispatch(action);
-//     })
-//    }
     getProjects = () => {
         const action = { type: 'FETCH_PROJECTS' };
         this.props.dispatch(action);
     }
+
     render() { 
-        
         return (
             <div>
                 <table>
@@ -48,7 +39,6 @@ class Project extends Component {
                                 <td>{project.date_completed}</td>
                                 <td>{project.tag_name}</td>
                             </tr>)
-
                         })}
                     </tbody>
                 </table>
@@ -56,6 +46,7 @@ class Project extends Component {
         );
     }
 }
+
 const mapStoreToProps = reduxStore => ({
     reduxStore,
 })
