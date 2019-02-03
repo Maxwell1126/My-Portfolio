@@ -3,64 +3,72 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import AdminRow from './AdminRow.js'
 class Admin extends Component {
-constructor(){
-    super()
-    this.state={
-        newProject:{
-        name:null,
-        description:null,
-        date_completed:null,
-        github:null,
-        website:null,
-        tag:2,
+    constructor() {
+        super()
+        this.state = {
+            newProject: {
+                name: null,
+                description: null,
+                date_completed: null,
+                github: null,
+                website: null,
+                tag: 2,
+            }
         }
     }
-}
     componentDidMount() {
         this.getProjects();
     }
+
     updateName = (event) => {
         this.setState({
             newProject: {
                 ...this.state.newProject,
                 name: event.target.value,
-            } 
+            }
         })
-        
-        
-    }    
+
+    }
+
     updateDate = (event) => {
         this.setState({
             newProject: {
                 ...this.state.newProject,
                 date_completed: event.target.value,
-            } 
+            }
         })
     }
+
     updateWebsite = (event) => {
         this.setState({
             newProject: {
                 ...this.state.newProject,
                 website: event.target.value,
-            } 
+            }
         })
-
     }
+
     updateGithub = (event) => {
         this.setState({
             newProject: {
                 ...this.state.newProject,
                 github: event.target.value,
-            } 
+            }
         })
     }
+
     updateDescription = (event) => {
         this.setState({
             newProject: {
                 ...this.state.newProject,
                 description: event.target.value,
-            } 
+            }
         })
+    }
+
+    getTags = () => {
+        const action = { type: 'FETCH_TAGS'};
+        this.props.dispatch(action);
     }
 
     getProjects = () => {
@@ -68,29 +76,11 @@ constructor(){
         this.props.dispatch(action);
     }
 
-    addProject = event => {
-        console.log('website', this.state.website);
-        console.log('date', this.state.date_completed);
-        // event.preventDefault();
-        // Create a saga that listens for 'ADD_PLANT'
-        const action = { type: 'ADD_PROJECT', payload: this.state.newProject}
+    addProject = (event) => {
+        const action = { type: 'ADD_PROJECT', payload: this.state.newProject }
         this.props.dispatch(action)
-        
     }
-    // addProject = () => {
-    //     this.setState({
-    //         url: this.props.result.images.fixed_width.url
-    //     })
 
-    //     let image = this.state.url
-    //     axios({
-    //         method: 'POST',
-    //         url: '/api/favorite',
-    //         data: image
-    //     }).then((response) => {
-    //         console.log('hey state', this.state);
-    //         this.getFavorites();
-    //     })
     render() {
         return (
             <div>
@@ -107,7 +97,7 @@ constructor(){
                 <input onChange={this.updateDate} type="date" placeholder="date"></input>
                 <input onChange={this.updateGithub} placeholder="GitHub URL"></input>
                 <input onChange={this.updateWebsite} placeholder="Webstire URL"></input>
-                <textarea onChange={this.updateDescription} defaultValue="Description"rows="5" cols="100"></textarea>
+                <textarea onChange={this.updateDescription} defaultValue="Description" rows="5" cols="100"></textarea>
                 <button onClick={this.addProject}>Submit</button>
 
                 <table>
@@ -121,7 +111,7 @@ constructor(){
                         {this.props.reduxStore.projects.map((project) => {
                             return (
                                 <AdminRow key={project.id} project={project} />
-                                )
+                            )
                         })}
                     </tbody>
                 </table>
