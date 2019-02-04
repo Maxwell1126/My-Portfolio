@@ -21,8 +21,29 @@ We evenly space the button and input field in the cards. */
     display: flex;
     justify-content: space-evenly;
 }
-
-
+h1{
+    background-color: white;
+    text-align: center;
+    padding-top:5px;
+    padding-bottom:5px;
+    margin-top: 10px;
+}
+.image{
+    justify-content: center;
+    display: flex;
+    padding-bottom: 10px;
+}
+.img{
+    border-style: solid;
+    border-width: 2px;
+}
+.wrapper{
+    background-color: white;
+    margin-right: 320px;
+    margin-left: 320px;
+    border-style: double;
+    border-width: 5px;
+}
 /* We set the width of the containing element to the cards.
 We also center the cards with in the containing element.
 Last, we center the container in the midle of the page. */
@@ -35,10 +56,11 @@ Last, we center the container in the midle of the page. */
 }
 
 .background{
+    justify-content: center;
     padding: 10px;
-    margin-left: 350px;
+    margin-left: 250px;
     margin-top:10px;
-    margin-right:350px;
+    margin-right:250px;
 }
 
 /* We give the header element a navy background and white text.

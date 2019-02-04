@@ -79,6 +79,15 @@ class Admin extends Component {
         })   
     }
 
+    updateThumbnail = (event) => {
+        this.setState({
+            newProject: {
+                ...this.state.newProject,
+                thumbnail: event.target.value,
+            }
+        })
+    }
+
     getTags = () => {
         const action = { type: 'FETCH_TAGS'};
         this.props.dispatch(action);

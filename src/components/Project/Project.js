@@ -19,7 +19,13 @@ class Project extends Component {
     render() {
         return (
             <div className="background">
-                <Card className="cardheader"><Typography><h1>Max's Portfolio</h1></Typography></Card>
+                <div className="wrapper">
+                <Typography><h1>Max's Portfolio</h1></Typography>
+
+                <div className="image">
+                <img className="img" src='/images/me.jpg' />
+                </div>
+                </div>
                 {this.props.reduxStore.projects.map((project) => {
                     return (<ProjectRow key={project.id} project={project} />)
                 })}
