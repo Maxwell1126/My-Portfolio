@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ProjectRow from './ProjectRow';
-import Card from '@material-ui/core/Card';
 import 'typeface-roboto';
 import Typography from '@material-ui/core/Typography';
 import './Project.css'
@@ -20,7 +19,7 @@ class Project extends Component {
         return (
             <div className="background">
                 <div className="wrapper">
-                <Typography><h1>Max's Portfolio</h1></Typography>
+                    <Typography><h1><strong><u>Max's Portfolio</u></strong></h1></Typography>
 
                 <div className="image">
                 <img className="img" src='/images/me.jpg' />
