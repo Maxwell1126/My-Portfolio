@@ -5,6 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import 'typeface-roboto';
 import Typography from '@material-ui/core/Typography';
 import './Project.css';
@@ -20,7 +21,7 @@ class ProjectRow extends Component {
         }
         let appendThumbnail = null;
         if (this.props.project.thumbnail !== null) {
-            appendThumbnail = <p><strong><u>Thumbnail:  </u></strong>{this.props.project.thumbnail}</p>
+            appendThumbnail = <p><strong><u>Thumbnail:  </u></strong><br/><img src={this.props.project.thumbnail}/></p>
         }
         let appendWebsite = null;
         if (this.props.project.website !== null) {
@@ -38,15 +39,15 @@ class ProjectRow extends Component {
             <Card className="card">
                 <Typography>
                 <CardContent className="content">
-                
+
+                 {appendThumbnail}
                     {appendName}
                     {appendDate}
-                    {appendThumbnail}
                     {appendWebsite}
                     {appendGithub}
-                        <p><strong><u>Tag:  </u></strong> {this.props.project.tag_name}</p>
+                    <p><strong><u>Tag:  </u></strong> {this.props.project.tag_name}</p>
                 </CardContent>
-                <CardContent >
+                <CardContent className="description">
 
                     {appendDescription}
                     

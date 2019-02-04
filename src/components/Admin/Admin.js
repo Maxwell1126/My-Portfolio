@@ -11,6 +11,7 @@ class Admin extends Component {
                 name: null,
                 description: null,
                 date_completed: null,
+                thumbnail:null,
                 github: null,
                 website: null,
                 tag: null,
@@ -109,9 +110,11 @@ class Admin extends Component {
                     })}
                 </select>
                 <input onChange={this.updateDate} type="date" placeholder="date"></input>
+                <br />
                 <input onChange={this.updateGithub} placeholder="GitHub URL"></input>
-                <input onChange={this.updateWebsite} placeholder="Webstire URL"></input>
-                <br/>
+                <input onChange={this.updateWebsite} placeholder="Webstire URL"></input> 
+                <input onChange={this.updateThumbnail} placeholder="thumbnail"></input>
+                <br />
                 <textarea onChange={this.updateDescription} defaultValue="Description" rows="5" cols="100"></textarea>
                 <button onClick={this.addProject}>Submit</button>
                 <table>
