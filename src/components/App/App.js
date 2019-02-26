@@ -9,10 +9,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      
+    {/* The project page is the home page.
+    We can get to the admin page with /admin. */}
       <Router>
-        <div>
-            
+        <div>    
         <Route exact path="/" component={Project} />
         <Route exact path="/Admin" component={Admin} />
         </div>

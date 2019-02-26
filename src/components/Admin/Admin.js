@@ -110,7 +110,7 @@ class Admin extends Component {
                 < br/>
                 <input onChange={this.updateName} placeholder="Name"></input>
                 <select onChange={this.updateTag}>
-               
+
                     <option value="" disabled selected>Select a Tag</option>
                     {this.props.reduxStore.tags.map((tag) => {
                         return (

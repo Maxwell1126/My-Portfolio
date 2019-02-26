@@ -5,16 +5,16 @@ import 'typeface-roboto';
 import Typography from '@material-ui/core/Typography';
 import './Project.css'
 class Project extends Component {
-
+//runs a get when the componenet mounts
     componentDidMount() {
         this.getProjects()
     }
-
+    // sends an action type to the index.js
     getProjects = () => {
         const action = { type: 'FETCH_PROJECTS' };
         this.props.dispatch(action);
     }
-
+    //Maping over the 
     render() {
         return (
             <div className="background">
